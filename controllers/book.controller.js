@@ -21,10 +21,25 @@ async function searchBook(req, res, next) {
         const response = await axios.get(`
         https://www.googleapis.com/books/v1/volumes?q=${title}
         `)
+
+        const finalResponse = response.data.items.map(obj => {
+            
+            let newObj = {
+                ...obj,
+                volumeInfo: {
+                    ...obj.volumeInfo,
+                    averageRating: Math.ceil(obj.volumeInfo.averageRating)
+                } 
+            }
+
+            return newObj
+        })
+
         res.render('result', {
             pageTitle: 'result of search',
-            results: response.data.items,
-            path: '/result'
+            results: finalResponse,
+            path: '/result',
+            search: title
         })
     } catch (err) {
         const error = new Error(err);

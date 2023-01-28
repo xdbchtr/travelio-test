@@ -7,6 +7,11 @@
 <body>
     <%- include('./includes/navigation.ejs') %>
     <main>
+        <%  if (path != '/wishlists') { %>
+            <div class="grid">
+                <h1> Menampilkan Hasil Pencarian dari "<%= search %>"</h1>
+            </div>
+        <% } %>
         <% if(results.length > 0) { %>
             <div class="grid">
                 <% for (let result of results) { %>
@@ -31,8 +36,9 @@
                             </h5>
                         </div>
                         <div class="card__actions">
-                            <!-- <span class="fa fa-star fa-1x" style="color: yellowgreen;"></span> -->
-                            <div class="rater"></div>
+                            <% for (let i=0;i < result.volumeInfo.averageRating; i++) { %>
+                                <span class="fa fa-star fa-1x" style="color: yellowgreen;"></span>
+                            <% } %>
                             <br>
                             <br>
                             <%  if (path == '/wishlists') { %>
