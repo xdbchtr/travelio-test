@@ -45,3 +45,5 @@ jobs:
         script: |
           cd /var/www/html/travelio-test
           git pull origin main
+          docker build -t travelio .
+          docker run --name travelio -d -p 8080:8080 -d --rm travelio
