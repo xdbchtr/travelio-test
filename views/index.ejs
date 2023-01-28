@@ -5,16 +5,35 @@
 <body>
     <%- include('./includes/navigation.ejs') %>
     <main>
-        <form action="/search-book" method="POST">
-            <div class="form-control">
-                <label for="title">Title</label>
-                <input 
-                    type="text" 
-                    name="title" 
-                    id="title">
-            </div>
-            <br>
-            <button class="btn" type="submit">Search</button>
-        </form>
+        <div class="grid"></div>
+            <article class="card book-item">
+                <header class="card__header">
+                    <h1 class="item__title" style="text-align: center;">
+                        TRAVELIO TASK
+                    </h1>
+                </header>
+                <div class="card__image">
+                    <img src="https://www.drupal.org/files/project-images/Google-API.jpg" alt="">
+                </div>
+                <div class="card__content">
+                    <h2 class="item__author" style="text-align: center;">
+                        Google API List of Book
+                    </h2>
+                </div>
+                <div class="card__actions">
+                    <form action="/search-book" method="POST">
+                        <div class="form-control">
+                            <label for="title">Type Book Title</label>
+                            <input 
+                                type="text" 
+                                name="title" 
+                                id="title">
+                        </div>
+                        <br>
+                        <button class="btn" type="submit">Search</button>
+                    </form>
+                </div>
+            </article>
+        </div>
     </main>
 <%- include('./includes/end.ejs') %>
