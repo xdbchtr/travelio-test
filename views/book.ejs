@@ -9,7 +9,7 @@
                 <img src="<%= result.volumeInfo.imageLinks.thumbnail %>" alt="<%= result.volumeInfo.title %>">
             </div>
             <h2><%= result.volumeInfo.authors %></h2>
-            <p><%= result.volumeInfo.description %></p>
+            <%- result.volumeInfo.description -%>
             <form action="/add-to-wishlist/<%= result.id %>" method="POST">
                 <button class="btn" type="submit">add to wishlist</button>
             </form>
