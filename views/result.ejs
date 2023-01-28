@@ -1,0 +1,51 @@
+<%- include('./includes/head.ejs') %>
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/search.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <main>
+        <% if(results.length > 0) { %>
+            <div class="grid">
+                <% for (let result of results) { %>
+                    <article class="card book-item">
+                        <header class="card__header">
+                            <h1 class="item__title">
+                                <%= result.volumeInfo.title %>
+                            </h1>
+                        </header>
+                            <% if(result.volumeInfo.imageLinks != null) { %>
+                                <div class="card__image">
+                                    <img src="<%= result.volumeInfo.imageLinks.thumbnail %>" alt="<%= result.volumeInfo.title %>">
+                                </div>
+                            <% } else { %>
+                                <div class="card__image">
+                                    <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg" alt="<%= result.volumeInfo.title %>">
+                                </div>
+                            <% } %>
+                        <div class="card__content">
+                            <h5 class="item__author">
+                                <%= result.volumeInfo.authors %>
+                            </h5>
+                        </div>
+                        <div class="card__actions">
+                            <!-- <span class="fa fa-star fa-1x" style="color: yellowgreen;"></span> -->
+                            <div class="rater"></div>
+                            <br>
+                            <br>
+                            <a href="/search-book/<%= result.id %>" class="btn">Details</a>
+                            <%  if (path == '/wishlists') { %>
+                                <input type="hidden" value="<%= result.id %>" name="bookId">
+                                <button class="btn danger" type="button" onclick="deleteBook(this)">Delete</button>
+                            <% } %>
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+        <% } else { %>
+            <h1>No Data Found!</h1>
+        <% } %>
+    </main>
+<%- include('./includes/end.ejs') %>

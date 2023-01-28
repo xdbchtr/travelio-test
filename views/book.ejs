@@ -1,0 +1,17 @@
+<%- include('./includes/head.ejs') %>
+    </head>
+    <body>
+        <%- include('./includes/navigation.ejs') %>
+        <main class="centered">
+            <h1><%= result.volumeInfo.title %></h1>
+            <hr>
+            <div class="image">
+                <img src="<%= result.volumeInfo.imageLinks.thumbnail %>" alt="<%= result.volumeInfo.title %>">
+            </div>
+            <h2><%= result.volumeInfo.authors %></h2>
+            <p><%= result.volumeInfo.description %></p>
+            <form action="/add-to-wishlist/<%= result.id %>" method="POST">
+                <button class="btn" type="submit">add to wishlist</button>
+            </form>
+        </main>
+        <%- include('./includes/end.ejs') %>
