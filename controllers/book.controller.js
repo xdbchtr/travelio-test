@@ -50,6 +50,23 @@ async function getBook(req, res, next) {
     }
 }
 
+async function detailWishlist(req, res, next) {
+    try {
+        const response = await axios.get(`
+        https://www.googleapis.com/books/v1/volumes/${req.params.bookId}
+        `)
+        res.render('book', {
+            pageTitle: 'detail wishlist',
+            result: response.data,
+            path: '/detail-wishlist'
+        })
+    } catch (err) {
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
+    }
+}
+
 async function postWishlist(req, res, next) {
     try {
         const wishlistId = req.params.wishlistId;
@@ -111,5 +128,6 @@ module.exports = {
     getBook,
     postWishlist,
     getWishlists,
-    deleteWishlist
+    deleteWishlist,
+    detailWishlist
 }

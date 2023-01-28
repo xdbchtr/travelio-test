@@ -4,7 +4,8 @@ RUN apk update && apk add bash \
     nano \
     tzdata \
     openrc \
-    git
+    git \
+    openssh
 
 WORKDIR /var/www/html
 

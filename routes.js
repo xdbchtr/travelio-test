@@ -10,6 +10,8 @@ router.post('/search-book', bookController.searchBook)
 
 router.get('/search-book/:bookId', bookController.getBook)
 
+router.get('/detail-wishlist/:bookId', bookController.detailWishlist)
+
 router.post('/add-to-wishlist/:wishlistId', bookController.postWishlist)
 
 router.get('/my-wishlists', bookController.getWishlists)

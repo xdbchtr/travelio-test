@@ -35,10 +35,12 @@
                             <div class="rater"></div>
                             <br>
                             <br>
-                            <a href="/search-book/<%= result.id %>" class="btn">Details</a>
                             <%  if (path == '/wishlists') { %>
+                                <a href="/detail-wishlist/<%= result.id %>" class="btn">Details</a>
                                 <input type="hidden" value="<%= result.id %>" name="bookId">
                                 <button class="btn danger" type="button" onclick="deleteBook(this)">Delete</button>
+                            <% } else { %>
+                                <a href="/search-book/<%= result.id %>" class="btn">Details</a>
                             <% } %>
                         </div>
                     </article>
