@@ -36,11 +36,15 @@
                             </h5>
                         </div>
                         <div class="card__actions">
-                            <% for (let i=0;i < result.volumeInfo.averageRating; i++) { %>
-                                <span class="fa fa-star fa-1x" style="color: yellowgreen;"></span>
+                            <% if (result.volumeInfo.averageRating) { %>
+                                <% for (let i=0;i < result.volumeInfo.averageRating; i++) { %>
+                                    <span class="fa fa-star fa-1x" style="color: yellowgreen;"></span>
+                                <% } %>
+                                <br>
+                                <br>
+                            <% } else { %>
+                                <p style="color: red;">No Rating</p>
                             <% } %>
-                            <br>
-                            <br>
                             <%  if (path == '/wishlists') { %>
                                 <a href="/detail-wishlist/<%= result.id %>" class="btn">Details</a>
                                 <input type="hidden" value="<%= result.id %>" name="bookId">
