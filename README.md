@@ -28,6 +28,6 @@ jalankan
 npm install
 npm start
 ```
-pada console
+pada console dan kabari jika perlu isi file .env
 ### Atau kunjungi aplikasi yang sudah di-deploy
 [lihat Web disini](http://206.189.156.24:8080/)
