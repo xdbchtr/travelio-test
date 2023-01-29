@@ -10,4 +10,5 @@ let sortedArray = arrayNumber.sort((a, b) => {
 })
 
 // output
-console.log(sortedArray[1])
+console.log('input = ', input)
+console.log('output = ', sortedArray[1])

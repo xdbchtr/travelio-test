@@ -32,4 +32,5 @@ const modifiedData = data.map(obj => {
 })
 
 // output
-console.log(modifiedData)
+console.log('input = ', data)
+console.log('output',modifiedData)

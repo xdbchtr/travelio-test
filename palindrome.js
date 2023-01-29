@@ -1,5 +1,10 @@
-// input
+const checkPalindrome = (name) => {
+    if(name.split("").reverse().join("") == name) {
+        return 'palindrome'
+    } else {
+        return 'not palindrom'
+    }
+}
 const name = 'nababan'
-
-// output
-name.split("").reverse().join("") == name ? console.log('palindrom') : console.log('not palindrom')
+console.log('input =', name)
+console.log('output =',checkPalindrome(name))
