@@ -53,10 +53,14 @@ async function getBook(req, res, next) {
         const response = await axios.get(`
         https://www.googleapis.com/books/v1/volumes/${req.params.bookId}
         `)
+
+        let isExisted = await Wishlist.findOne({ 'bookId': req.params.bookId })
+
         res.render('book', {
             pageTitle: 'detail book',
             result: response.data,
-            path: '/getbook'
+            path: '/getbook',
+            isExist: isExisted ? true : false
         })
     } catch (err) {
         const error = new Error(err);
@@ -73,7 +77,8 @@ async function detailWishlist(req, res, next) {
         res.render('book', {
             pageTitle: 'detail wishlist',
             result: response.data,
-            path: '/detail-wishlist'
+            path: '/detail-wishlist',
+            isExist: false
         })
     } catch (err) {
         const error = new Error(err);

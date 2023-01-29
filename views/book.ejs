@@ -11,9 +11,13 @@
             <h2><%= result.volumeInfo.authors %></h2>
             <%- result.volumeInfo.description -%>
             <% if (path === '/getbook') { %>
-                <form action="/add-to-wishlist/<%= result.id %>" method="POST">
+                <% if (isExist) { %>
+                    <button class="btn danger">already in your Wishlists</button>
+                <% } else { %>
+                    <form action="/add-to-wishlist/<%= result.id %>" method="POST">
                         <button class="btn" type="submit">add to wishlist</button>
                     </form>
+                <% } %>
             <% } %>
         </main>
         <%- include('./includes/end.ejs') %>
